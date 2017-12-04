@@ -3,6 +3,6 @@
 int main()
 {
     gfx_open(WIDTH, HEIGHT, "window");
-    while (true);
+    while (true){}
     return 0;
 }
