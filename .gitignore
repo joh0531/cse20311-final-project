@@ -4,6 +4,7 @@ gfx_mac2.o
 gfx_mac.o
 project
 .DS_Store
+PlayGame
 
 # Prerequisites
 *.d
