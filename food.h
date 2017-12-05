@@ -1,3 +1,6 @@
+#ifndef FOOD_H
+#define FOOD_H
+
 class food{
   public:
       food();
@@ -13,4 +16,6 @@ class food{
   private:
       int x;
       int y;
-}
+};
+
+#endif

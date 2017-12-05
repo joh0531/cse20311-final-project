@@ -1,4 +1,5 @@
-
+#ifndef PIXEL_H
+#define PIXEL_H
 
 class pixel{
 
@@ -16,4 +17,6 @@ public:
 private:
     int x;
     int y;
-}
+};
+
+#endif
