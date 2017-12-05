@@ -35,3 +35,10 @@ int pixel::getY(){
 }
 
 void pixel::draw(){ }
+
+pixel& pixel::operator= (&pixel a){
+  x = a.getX();
+  y = a.getY();
+
+  return *this;
+}

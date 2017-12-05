@@ -2,13 +2,14 @@
 #define SNAKE_H
 #include <vector>
 #include "pixel.h"
+#include "food.h"
 
 class snake{
   public:
       snake();
       ~snake();
       pixel getPixel(int);
-      void setPixel(int, int);
+      void setPixel(int, int, int);
       int getSpeed();
       void setSpeed(int);
       int getDirection();
@@ -16,8 +17,9 @@ class snake{
       void addPixel(int, int);
       int getScore();
       void updateScore();
-      void eatFood(int);
-      int checkDeath();
+      bool checkFood(food);
+      void eatFood(int, int, int);
+      bool checkDeath();
       void drawSnake();
 
       //snake moves by setting a pixel to the value of the pixel in front of it in the snake.
@@ -30,4 +32,4 @@ class snake{
       int score;
 };
 
-#endif 
+#endif

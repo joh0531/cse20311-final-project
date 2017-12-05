@@ -13,6 +13,7 @@ public:
   int getX();
   int getY();
   void draw();
+  pixel& operator= (&pixel);
 
 private:
     int x;
