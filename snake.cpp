@@ -57,6 +57,9 @@ void eatFood(int s, int a, int b){
   for(int i = 1; i<= s; i++){
     this->addPixel(a, b)
   }
+  if (speed < 16){
+    speed++;
+  }
 }
 
 int checkDeath(){
