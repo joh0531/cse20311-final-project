@@ -33,3 +33,5 @@ int pixel::getX(){
 int pixel::getY(){
   return y;
 }
+
+void pixel::draw(){ }

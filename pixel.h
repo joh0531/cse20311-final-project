@@ -11,6 +11,7 @@ public:
   void setLocation(int, int);
   int getX();
   int getY();
+  void draw();
 
 private:
     int x;

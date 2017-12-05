@@ -33,3 +33,5 @@ int food::getX(){
 int food::getY(){
   return y;
 }
+
+void food::draw(){ }
