@@ -14,6 +14,7 @@ void Game::draw(){
             int wd = gfx_windowwidth();
             int ht = gfx_windowheight();
             gfx_text(wd / 2 - 52, ht / 2, "click to begin game"); //output something saying "click to begin game"
+            spawnFood();
             break;
         }
         case RUN:
@@ -21,6 +22,7 @@ void Game::draw(){
             snake.drawSnake();
             break;
         case GAMEOVER:
+            gfx_clear();
             break;
     }
 }
@@ -43,6 +45,14 @@ void Game::update(){
                     //char c = gfx_wait();
                     //if (direction < 5){
                       snake.update();
+                      //if (snake.checkDeath()){
+                      //  state = GAMEOVER;
+                      //}
+                      if (snake.checkFood(food.getX(), food.getY())){
+                        snake.eatFood(3, food.getX(), food.getY());
+                        spawnFood();
+                      }
+
                     //}
                 //}
 
@@ -93,23 +103,23 @@ void Game::startGame(){
   Snake snake;
   Food food;
   snake.drawSnake();
-  food = this->spawnFood(snake);
+  food = this->spawnFood();
 }
 
 
-Food Game::spawnFood(Snake snake) {
+Food Game::spawnFood() {
   bool check = false;
   int randx = 0;
   int randy = 0;
   while (check == false){
     randx = rand() % 31;
     randy = rand() % 31;
-    check = Game::checkFoodSpawn(snake, randx, randy);
+    check = checkFoodSpawn(randx, randy);
   }
-  return Food(randx, randy);
+  food.setLocation(randx, randy);
 }
 
-bool Game::checkFoodSpawn(Snake snake, int x, int y) {
+bool Game::checkFoodSpawn(int x, int y) {
   bool logic = snake.checkFoodSpawn(x,y);
   return logic;
 }

@@ -17,8 +17,8 @@ class Game{
     void input(int, char);
     void startGame();
     void initializeGame();
-    Food spawnFood(Snake);
-    bool checkFoodSpawn(Snake, int, int);
+    Food spawnFood();
+    bool checkFoodSpawn(int, int);
     enum State{
         WAIT,
         RUN,
