@@ -1,6 +1,6 @@
 #ifndef FOOD_H
 #define FOOD_H
-#include "gfx.h"
+#include "gfxnew.h"
 
 class Food{
   public:
@@ -13,7 +13,7 @@ class Food{
       int getX();
       int getY();
       void draw();
-      Food& operator=(const Food&);
+      Food& operator=(Food);
 
   private:
       int x;
