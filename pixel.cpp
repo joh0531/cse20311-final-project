@@ -1,44 +1,44 @@
 #include "pixel.h"
 
-pixel::pixel(){
+Pixel::Pixel(){
   x = 0;
   y = 0;
 }
 
-pixel::pixel(int a, int b){
+Pixel::Pixel(int a, int b){
   x = a;
   y = b;
 }
 
-pixel::~pixel(){
+Pixel::~Pixel(){
 }
 
-void pixel::setX(int a){
+void Pixel::setX(int a){
   x = a;
 }
 
-void pixel::setY(int a){
+void Pixel::setY(int a){
   y = a;
 }
 
-void pixel::setLocation(int a, int b){
+void Pixel::setLocation(int a, int b){
   x = a;
   y = b;
 }
 
-int pixel::getX(){
+int Pixel::getX(){
   return x;
 }
 
-int pixel::getY(){
+int Pixel::getY(){
   return y;
 }
 
-void pixel::draw(){ }
+void Pixel::draw(){ }
 
-pixel& pixel::operator= (&pixel a){
-  x = a.getX();
-  y = a.getY();
+Pixel& Pixel::operator= (Pixel &a){
+  x = a.x;
+  y = a.y;
 
   return *this;
 }

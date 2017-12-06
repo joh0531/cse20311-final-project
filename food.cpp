@@ -1,37 +1,37 @@
 #include "food.h"
 
-food::food(){
+Food::Food(){
   x = 0;
   y = 0;
 }
 
-food::food(int a, int b){
+Food::Food(int a, int b){
   x = a;
   y = b;
 }
 
-food::~food(){
+Food::~Food(){
 }
 
-void food::setX(int a){
+void Food::setX(int a){
   x = a;
 }
 
-void food::setY(int a){
+void Food::setY(int a){
   y = a;
 }
 
-void food::setLocation(int a, int b){
+void Food::setLocation(int a, int b){
   x = a;
   y = b;
 }
 
-int food::getX(){
+int Food::getX(){
   return x;
 }
 
-int food::getY(){
+int Food::getY(){
   return y;
 }
 
-void food::draw(){ }
+void Food::draw(){ }

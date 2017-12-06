@@ -1,19 +1,19 @@
 #ifndef PIXEL_H
 #define PIXEL_H
 
-class pixel{
+class Pixel{
 
 public:
-  pixel();
-  pixel(int, int);
-  ~pixel();
+  Pixel();
+  Pixel(int, int);
+  ~Pixel();
   void setX(int);
   void setY(int);
   void setLocation(int, int);
   int getX();
   int getY();
   void draw();
-  pixel& operator= (&pixel);
+  Pixel& operator=(Pixel&);
 
 private:
     int x;

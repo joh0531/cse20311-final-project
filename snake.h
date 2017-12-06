@@ -4,11 +4,11 @@
 #include "pixel.h"
 #include "food.h"
 
-class snake{
+class Snake{
   public:
-      snake();
-      ~snake();
-      pixel getPixel(int);
+      Snake();
+      ~Snake();
+      Pixel getPixel(int);
       void setPixel(int, int, int);
       int getSpeed();
       void setSpeed(int);
@@ -17,16 +17,16 @@ class snake{
       void addPixel(int, int);
       int getScore();
       void updateScore();
-      bool checkFood(food);
+      bool checkFood(Food);
       void eatFood(int, int, int);
       bool checkDeath();
       void drawSnake();
 
-      //snake moves by setting a pixel to the value of the pixel in front of it in the snake.
+      //Snake moves by setting a pixel to the value of the pixel in front of it in the Snake.
       void incrementSnake();
 
   private:
-      std::vector<pixel> live_snake;
+      std::vector<Pixel> live_snake;
       int speed;
       int direction;
       int score;

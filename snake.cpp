@@ -1,68 +1,67 @@
 #include "snake.h"
 
-snake::snake(){
-  std::vector<pixel> live_snake;
-  live_snake.push_back(pixel(15,15));
+Snake::Snake(){
+  live_snake.push_back(Pixel(15,15));
   speed = 1;
   direction = 0;
   score = 1;
 }
 
-snake::~snake(){ }
+Snake::~Snake(){ }
 
-pixel snake::getPixel(int a){
+Pixel Snake::getPixel(int a){
   return live_snake[a];
 }
 
-void snake::setPixel(int l, int a, int b){
+void Snake::setPixel(int l, int a, int b){
   live_snake[l].setLocation(a,b);
 }
 
-void snake::getSpeed(){
+int Snake::getSpeed(){
   return speed;
 }
 
-void snake::setSpeed(int a){
+void Snake::setSpeed(int a){
   speed = a;
 }
 
-void snake::getDirection(){
+int Snake::getDirection(){
   return direction;
 }
 
-void snake::setDirection(int a){
+void Snake::setDirection(int a){
   direction = a;
 }
 
-void snake::addPixel(int a, int b){
-  live_snake.push_back(pixel(a,b));
+void Snake::addPixel(int a, int b){
+  live_snake.push_back(Pixel(a,b));
 }
 
-int snake::getScore(){
+int Snake::getScore(){
   return score;
 }
 
-void snake::updateScore(){
+void Snake::updateScore(){
   score = live_snake.size();
 }
 
-bool snake::checkFood(food a){
-  if (food.getX() == live_snake[0].getX() && food.getY() == live_snake[0].getY()){
+bool Snake::checkFood(Food a){
+  if (a.getX() == live_snake[0].getX() && a.getY() == live_snake[0].getY()){
     return true;
   }
   return false;
 }
 
-void eatFood(int s, int a, int b){
+void Snake::eatFood(int s, int a, int b){
   for(int i = 1; i<= s; i++){
-    this->addPixel(a, b)
+    this->addPixel(a, b);
   }
   if (speed < 16){
     speed++;
   }
 }
 
-int checkDeath(){
+bool Snake::checkDeath(){
   if (live_snake.size()>1){
     auto it = live_snake.begin();
     it++;

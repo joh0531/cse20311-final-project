@@ -1,11 +1,11 @@
 #ifndef FOOD_H
 #define FOOD_H
 
-class food{
+class Food{
   public:
-      food();
-      food(int, int);
-      ~food();
+      Food();
+      Food(int, int);
+      ~Food();
       void setX(int);
       void setY(int);
       void setLocation(int, int);
