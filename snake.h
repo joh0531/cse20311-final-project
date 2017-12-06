@@ -2,6 +2,8 @@
 #define SNAKE_H
 #include <vector>
 #include <cmath>
+#include <algorithm>
+#include <iostream>
 #include "pixel.h"
 #include "food.h"
 
@@ -32,7 +34,7 @@ class Snake{
       bool checkDeath();
       void drawSnake();
       //Snake moves by setting a pixel to the value of the pixel in front of it in the Snake.
-      void incrementSnake(Direction);
+      void incrementSnake();
       bool checkFoodSpawn(int, int);
       void reset();
 

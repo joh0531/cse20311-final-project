@@ -2,8 +2,6 @@
 
 Snake::Snake(){
   live_snake.push_back(Pixel(16,16));
-  live_snake.push_back(Pixel(16,16));
-  live_snake.push_back(Pixel(16,16));
   speed = 1;
   dir = NONE;
   score = 3;
@@ -12,7 +10,7 @@ Snake::Snake(){
 Snake::~Snake(){ }
 
 void Snake::update(){
-  incrementSnake(dir);
+  incrementSnake();
 }
 
 void Snake::input(int event, char c){
@@ -52,8 +50,8 @@ int Snake::getDirection(){
   return dir;
 }
 
-void Snake::setDirection(Direction dir){
-  switch (dir)
+void Snake::setDirection(Direction d){
+  switch (d)
   {
       case RIGHT:
         if (this->dir != LEFT)
@@ -134,16 +132,26 @@ void Snake::drawSnake(){
   }
 }
 
-void Snake::incrementSnake(Direction dir){
-    auto it = live_snake.begin();
-    it++;
-    auto it2 = live_snake.begin();
-    while (it != live_snake.end()){
-      *it = *it2;
-      it++;
-      it2++;
+void Snake::incrementSnake(){
+    auto it2 = live_snake.rbegin();
+    it2++;
+    for (auto it = live_snake.rbegin(); it != live_snake.rend()-1; it++){
+        *it = *it2;
+        it2++;
     }
-    switch(dir){
+        /*auto it = live_snake.end();
+    it--;
+    it--;
+    auto it2 = live_snake.end();
+    it2--;
+
+    do {
+      *it2 = *it;
+      it--;
+      it2--;
+    } while (it != live_snake.begin());*/
+
+    switch(this->dir){
       case RIGHT:
       {
         int a = live_snake[0].getX() + 1;
@@ -190,6 +198,5 @@ bool Snake::checkFoodSpawn(int x, int y){
 
 void Snake::reset(){
   live_snake.clear();
-  Pixel pixel(17, 17);
-  live_snake.push_back(pixel);
+  live_snake.push_back(Pixel(16,16));
 }
