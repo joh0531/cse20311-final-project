@@ -5,6 +5,7 @@
 #include "food.h"
 #include <cstdlib>
 #include <chrono>
+#include <ctime>
 
 class Game{
   public:
