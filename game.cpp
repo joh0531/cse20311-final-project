@@ -9,6 +9,7 @@ void Game::startGame(){
   Food food;
   snake.drawSnake();
   food = Game::spawnFood(snake);
+  food.draw();
   bool gameover = false;
 
   while (gameover == false){
