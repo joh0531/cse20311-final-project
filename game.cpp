@@ -74,8 +74,8 @@ void Game::startGame(){
       }
     }
     }
-    snake.ateFood(3, food.getX(), food.getY())
-    food = Game::spawnFood(snake);
+    snake.eatFood(3, food.getX(), food.getY());
+    food = this->spawnFood(snake);
     gfx_clear();
     food.draw();
     snake.drawSnake();
@@ -93,8 +93,7 @@ Food Game::spawnFood(Snake snake) {
     randy = rand() % 31;
     check = Game::checkFoodSpawn(snake, randx, randy);
   }
-  Food s = Food(randx, randy);
-  return s;
+  return Food(randx, randy);
 }
 
 bool Game::checkFoodSpawn(Snake snake, int x, int y) {

@@ -13,6 +13,7 @@ class Food{
       int getX();
       int getY();
       void draw();
+      Food& operator=(Food);
 
   private:
       int x;

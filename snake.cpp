@@ -128,20 +128,12 @@ void Snake::incrementSnake(){
 
 bool Snake::checkFoodSpawn(int x, int y){
   for(auto it = live_snake.begin(); it != live_snake.end(); it++){
-    if (x == it->getX()){
+    if (x == it->getX() && y == it->getY())
       return false;
-    }
-    if (y == it->getY()){
-      return false;
-    }
     int diffx = abs(it->getX() - x);
     int diffy = abs(it->getY() - y);
-    if (diffx == 1){
+    if (diffx == 1 && diffy == 1)
       return false;
-    }
-    if (diffy == 1){
-      return false;
-    }
-    return true;
   }
+  return true;
 }

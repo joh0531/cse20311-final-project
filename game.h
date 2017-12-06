@@ -13,9 +13,11 @@ class Game{
     ~Game();
     void startGame();
     void initializeGame();
-    void spawnFood(Snake);
-    void checkFoodSpawn(Snake, int, int);
-
+    Food spawnFood(Snake);
+    bool checkFoodSpawn(Snake, int, int);
+private:
+    bool gameover = false;
+    bool atefood = false;
 
 };
 #endif
