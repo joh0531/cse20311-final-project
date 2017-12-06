@@ -109,13 +109,12 @@ bool Snake::checkDeath(){
   if (live_snake.size()>1){
     auto it = live_snake.begin();
     it++;
-    while(it != live_snake.end()){
+    while(it != live_snake.end()){}
       if(it->getX() == live_snake[0].getX() && it->getY() == live_snake[0].getY()){
         return true;
       }
       it++;
     }
-  }
   if (live_snake[0].getX() > 30 || live_snake[0].getX()<0){
     return true;
   }
@@ -174,11 +173,11 @@ bool Snake::checkFoodSpawn(int x, int y){
   for(auto it = live_snake.begin(); it != live_snake.end(); it++){
     if (x == it->getX() && y == it->getY())
       return false;
-    int diffx = abs(it->getX() - x);
-    int diffy = abs(it->getY() - y);
-    if (diffx <= 1 && diffy <= 1)
-      return false;
   }
+  int diffx = abs(live_snake[0].getX() - x);
+  int diffy = abs(live_snake[0].getY() - y);
+  if (diffx == 1 && diffy == 1)
+    return false;
   return true;
 }
 
