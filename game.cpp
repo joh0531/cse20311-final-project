@@ -4,14 +4,11 @@ Game::Game() {}
 
 Game::~Game() {}
 
-void Game::startGame(){}
-
-void Game::initializeGame(){
+void Game::startGame(){
   Snake snake;
   Food food;
   snake.drawSnake();
   food = Game::spawnFood(snake);
-
 }
 
 
