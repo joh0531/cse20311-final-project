@@ -34,7 +34,16 @@ int Pixel::getY(){
   return y;
 }
 
-void Pixel::draw(){ }
+void Pixel::draw(){
+    int side = 20; //block size is 20 pixels
+    for (int i = y; i < y + side; i++)
+    {
+        for (int j = x; j < x + side; j++)
+        {
+            gfx_point(i, j);
+        }
+    }
+}
 
 Pixel& Pixel::operator= (Pixel &a){
   x = a.x;

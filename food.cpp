@@ -34,4 +34,9 @@ int Food::getY(){
   return y;
 }
 
-void Food::draw(){ }
+void Food::draw(){
+    int rad = 10;
+    x = x * 20 + 10;
+    y = y * 20 + 10;
+    gfx_circle(x, y, rad);
+}
