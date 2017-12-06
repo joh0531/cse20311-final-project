@@ -5,6 +5,7 @@ Game::Game() {}
 Game::~Game() {}
 
 void Game::startGame(){
+  gfx_clear();
   Snake snake;
   Food food;
   snake.drawSnake();
