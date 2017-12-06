@@ -60,7 +60,7 @@ void Game::startGame(){
           }
       }
 
-      std::chrono::time_point<std::chrono::system_clock> foo = now + std::chrono::milliseconds(100);
+      std::chrono::time_point<std::chrono::system_clock> foo = now + std::chrono::milliseconds(1);
       auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(foo - now);
       auto ms = milliseconds.count();
       if (ms > time_limit){
