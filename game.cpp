@@ -74,5 +74,3 @@ bool Game::checkFoodSpawn(Snake snake, int x, int y) {
   bool logic = snake.checkFoodSpawn(x,y);
   return logic;
 }
-
-void Game::runGame() {}

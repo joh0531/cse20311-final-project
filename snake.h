@@ -24,6 +24,7 @@ class Snake{
 
       //Snake moves by setting a pixel to the value of the pixel in front of it in the Snake.
       void incrementSnake();
+      bool checkFoodSpawn(int, int);
 
   private:
       std::vector<Pixel> live_snake;

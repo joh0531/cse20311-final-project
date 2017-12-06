@@ -13,9 +13,9 @@ class Game{
     ~Game();
     void startGame();
     void initializeGame();
-    void spawnFood();
-    void checkFoodSpawn();
-    void runGame();
+    void spawnFood(Snake);
+    void checkFoodSpawn(Snake, int, int);
+
 
 };
 #endif
