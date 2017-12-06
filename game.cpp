@@ -1,4 +1,5 @@
 #include "game.h"
+#include <string>
 
 Game::Game() {
     state = WAIT;
@@ -11,9 +12,12 @@ void Game::draw(){
     {
         case WAIT:
         {
-            int wd = gfx_windowwidth();
-            int ht = gfx_windowheight();
-            gfx_text(wd / 2 - 52, ht / 2, "click to begin game"); //output something saying "click to begin game"
+            char text[] = "click to begin game";
+            char font[] = "12x24";
+            gfx_changefont(font);
+            int wd = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text, font) / 2);
+            int ht = (gfx_windowheight() / 2) - (gfx_textpixelheight(text, font) / 2);
+            gfx_text(wd, ht, text); //output something saying "click to begin game"
             break;
         }
         case RUN:
@@ -21,6 +25,18 @@ void Game::draw(){
             snake.drawSnake();
             break;
         case GAMEOVER:
+            char text1[] = "GAME OVER!";
+            char scoreText[] = "Score: ";
+            char score[] = c_str(std::to_string(snake.getScore()));
+            char text2[] = strcat(scoreText, score);
+            char font[] = "12x24";
+            gfx_changefont(font);
+            int wd1 = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text1, font) / 2);
+            int ht1 = (gfx_windowheight() / 2) - (gfx_textpixelheight(text1, font) / 2);
+            int wd2 = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text2, font) / 2);
+            int ht2 = (gfx_windowheight() / 2) - (gfx_textpixelheight(text2, font) / 2) + 20;
+            gfx_text(wd1, ht1, text1);
+            gfx_text(wd2, ht2, text2);
             break;
     }
 }
