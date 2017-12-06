@@ -15,7 +15,7 @@ void Game::startGame(){
     bool atefood = false;
     while (atefood == false && gameover == false){
       std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
-      int time_limit = 2000000/(snake.getSpeed()+9);
+      int time_limit = 2000/(snake.getSpeed()+9);
       bool moved = false;
       while (moved == false){
         if (gfx_event_waiting()){

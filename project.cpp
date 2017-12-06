@@ -8,6 +8,7 @@ int main()
     gfx_text(WIDTH / 2 - 52, HEIGHT / 2, "click to begin game"); //output something saying "click to begin game"
     char c = gfx_wait();
     Game game;
+    game.startGame();
 
     while (c != 'q'){
       gfx_clear();

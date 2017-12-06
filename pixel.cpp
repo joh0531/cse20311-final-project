@@ -36,9 +36,9 @@ int Pixel::getY(){
 
 void Pixel::draw(){
     int side = 20; //block size is 20 pixels
-    for (int i = y; i < y + side; i++)
+    for (int i = y*20+20; i < y + side; i++)
     {
-        for (int j = x; j < x + side; j++)
+        for (int j = x*20+20; j < x + side; j++)
         {
             gfx_point(i, j);
         }
