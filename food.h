@@ -1,6 +1,6 @@
 #ifndef FOOD_H
 #define FOOD_H
-#include "gfx.h"
+#include "gfxnew.h"
 
 class Food{
   public:

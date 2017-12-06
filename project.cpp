@@ -1,22 +1,43 @@
-#include "gfx.h"
+#include "gfxnew.h"
 #include "game.h"
+#include <unistd.h>
+#include <cmath>
+
+//window size
+const int WIDTH = 660;
+const int HEIGHT = 660;
+const int FPS = 60;
 
 int main()
 {
     gfx_open(WIDTH, HEIGHT, "Snake");
 
-    gfx_text(WIDTH / 2 - 52, HEIGHT / 2, "click to begin game"); //output something saying "click to begin game"
-    char c = gfx_wait();
     Game game;
+    bool quit = false;
+    double dt = 1.0 / FPS;
 
-    while (c != 'q'){
+    while (!quit){
+      //draw
       gfx_clear();
-      if (c == 1){
-        //output something asking user if he wants to play again
-        //output: "click to play again, q to quit"
+      game.draw();
+      gfx_flush();
+
+      //sleep
+      usleep(dt * pow(10, 6));
+
+      //update
+      game.update();
+
+      //input
+      int event = gfx_event_waiting();
+      if (event != 0)
+      {
+          char c = gfx_wait();
+          if (c == 'q')
+            quit = true;
+          else
+            game.input(event, c);
       }
-      c = 0;
-      gfx_wait();
     }
 
     return 0;

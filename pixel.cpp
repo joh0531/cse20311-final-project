@@ -35,14 +35,9 @@ int Pixel::getY(){
 }
 
 void Pixel::draw(){
-    int side = 20; //block size is 20 pixels
-    for (int i = y; i < y + side; i++)
-    {
-        for (int j = x; j < x + side; j++)
-        {
-            gfx_point(i, j);
-        }
-    }
+    int side = 20;
+    gfx_color(0, 255, 0);
+    gfx_fill_rectangle(x * 20, y * 20, side, side);
 }
 
 Pixel& Pixel::operator= (Pixel &a){
