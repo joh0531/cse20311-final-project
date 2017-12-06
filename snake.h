@@ -31,11 +31,10 @@ class Snake{
       void eatFood(int, int, int);
       bool checkDeath();
       void drawSnake();
-      void reset();
-
       //Snake moves by setting a pixel to the value of the pixel in front of it in the Snake.
       void incrementSnake(Direction);
       bool checkFoodSpawn(int, int);
+      void reset();
 
   private:
       std::vector<Pixel> live_snake;

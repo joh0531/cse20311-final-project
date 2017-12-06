@@ -46,10 +46,3 @@ Food& Food::operator=(Food a){
 
   return *this;
 }
-
-Food& Food::operator= (const Food &a){
-  x = a.x;
-  y = a.y;
-
-  return *this;
-}
