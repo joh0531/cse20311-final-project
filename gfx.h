@@ -9,8 +9,8 @@
 #include <X11/Xlib.h>
 
 //window size
-const int WIDTH = 600;
-const int HEIGHT = 500;
+const int WIDTH = 640;
+const int HEIGHT = 640;
 
 // Open a new graphics window.
 void gfx_open( int width, int height, const char *title );

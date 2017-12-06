@@ -4,6 +4,8 @@ Game::Game() {}
 
 Game::~Game() {}
 
+void Game::startGame(){}
+
 void Game::initializeGame(){
   Snake snake;
   Food food;
