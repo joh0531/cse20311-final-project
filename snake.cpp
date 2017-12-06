@@ -2,9 +2,11 @@
 
 Snake::Snake(){
   live_snake.push_back(Pixel(15,15));
+  live_snake.push_back(Pixel(15,15));
+  live_snake.push_back(Pixel(15,15));
   speed = 1;
   direction = 0;
-  score = 1;
+  score = 3;
 }
 
 Snake::~Snake(){ }
