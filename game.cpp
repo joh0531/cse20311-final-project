@@ -4,13 +4,55 @@ Game::Game() {}
 
 Game::~Game() {}
 
-void Game::startGame(){}
-
-void Game::initializeGame(){
+void Game::startGame(){
   Snake snake;
   Food food;
   snake.drawSnake();
   food = Game::spawnFood(snake);
+
+  while (gameover == false){
+    while (atefood == false && gameover == false){
+      std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+      int time_limit = 2000000/(snake.getSpeed()+9);
+      bool moved = false;
+      while (moved == false){
+        if (gfx_event_waiting()){
+          int direction = 5;
+          char c = gfx_wait();
+          switch (c){
+            case 'd': direction = 0;
+              break;
+            case 'w': direction = 1;
+              break;
+            case 'a': direction = 2;
+              break;
+            case 's': direction = 3;
+              break;
+            default:;
+          }
+          if (direction < 5){
+            snake.setDirection(direction);
+          }
+      }
+
+      std::chrono::time_point<std::chrono::system_clock> foo = now + std::chrono::milliseconds(100);
+      auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(foo - now);
+      auto ms = milliseconds.count();
+      if (ms > time_limit){
+        snake.incrementSnake();
+        moved = true;
+        if (snake.checkDeath()){
+          gameover = true;
+        }
+        if(snake.checkFood(food)){
+          atefood = true;
+        }
+      }
+    }
+    }
+    snake.ateFood(3, food.getX(), food.getY())
+    food = Game::spawnFood(snake);
+  }
 
 }
 
@@ -29,7 +71,8 @@ Food Game::spawnFood(Snake snake) {
 }
 
 bool Game::checkFoodSpawn(Snake snake, int x, int y) {
-  snake.checkFoodSpawn(x,y);
-
+  bool logic = snake.checkFoodSpawn(x,y);
+  return logic;
 }
+
 void Game::runGame() {}
