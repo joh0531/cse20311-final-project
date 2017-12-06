@@ -8,6 +8,7 @@ class Game{
   public:
     Game();
     ~Game();
+    void startGame();
     void initializeGame();
     void spawnFood();
     void checkFoodSpawn();

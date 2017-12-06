@@ -5,6 +5,7 @@ gfx_mac.o
 project
 .DS_Store
 PlayGame
+snake
 
 # Prerequisites
 *.d

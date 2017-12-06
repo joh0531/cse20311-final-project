@@ -3,16 +3,16 @@
 
 int main()
 {
-    WIDTH = 640; HEIGHT = 640;
     gfx_open(WIDTH, HEIGHT, "Snake");
 
-    gfx_text//output something saying "click to begin game"
+    gfx_text(WIDTH / 2 - 52, HEIGHT / 2, "click to begin game"); //output something saying "click to begin game"
     char c = gfx_wait();
+    Game game;
 
     while (c != 'q'){
+      gfx_clear();
       if (c == 1){
-        Game();
-        gfx_test//output something asking user if he wants to play again
+        //output something asking user if he wants to play again
         //output: "click to play again, q to quit"
       }
       c = 0;
