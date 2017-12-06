@@ -8,7 +8,7 @@ void Game::startGame(){
   Snake snake;
   Food food;
   snake.drawSnake();
-  food = Game::spawnFood(snake);
+  food = this->spawnFood(snake);
 
   while (gameover == false){
     while (atefood == false && gameover == false){
@@ -66,7 +66,7 @@ Food Game::spawnFood(Snake snake) {
     randy = rand() % 31;
     check = Game::checkFoodSpawn(snake, randx, randy);
   }
-  s = Food(randx, randy);
+  Food s = Food(randx, randy);
   return s;
 }
 
