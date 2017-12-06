@@ -59,6 +59,7 @@ void Snake::eatFood(int s, int a, int b){
   if (speed < 16){
     speed++;
   }
+  this->updateScore;
 }
 
 bool Snake::checkDeath(){
@@ -116,3 +117,5 @@ void incrementSnake(){
       default:;
     }
 }
+
+bool checkFood

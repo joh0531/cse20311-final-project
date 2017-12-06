@@ -3,6 +3,8 @@
 
 #include "snake.h"
 #include "food.h"
+#include <cstdlib>
+#include <chrono>
 
 class Game{
   public:
