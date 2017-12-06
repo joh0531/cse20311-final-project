@@ -117,8 +117,6 @@ void incrementSnake(){
       default:;
     }
 }
-<<<<<<< HEAD
-=======
 
 bool Snake::checkFoodSpawn(int x, int y){
   for(auto it = live_snake.begin(); it != live_snake.end(); it++){
@@ -139,4 +137,3 @@ bool Snake::checkFoodSpawn(int x, int y){
     return true;
   }
 }
->>>>>>> 22b4c9fadb117c33a785d61451ff2e5737d999c9
