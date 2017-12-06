@@ -31,7 +31,29 @@ void Game::startGame(){
             default:;
           }
           if (direction < 5){
-            snake.setDirection(direction);
+            switch(direction){
+              case 0:
+                if (snake.getDirection() != 2){
+                snake.setDirection(direction);
+                }
+                break;
+              case 1:
+                if (snake.getDirection() != 3){
+                  snake.setDirection(direction);
+                }
+                break;
+              case 2:
+                if (snake.getDirection() != 0){
+                  snake.setDirection(direction);
+                }
+                break;
+              case 3:
+                if (snake.getDirection() != 1){
+                  snake.setDirection(direction);
+                }
+                break;
+              default:;
+            }
           }
       }
 
@@ -39,7 +61,9 @@ void Game::startGame(){
       auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(foo - now);
       auto ms = milliseconds.count();
       if (ms > time_limit){
+        gfx_clear();
         snake.incrementSnake();
+        snake.drawSnake();
         moved = true;
         if (snake.checkDeath()){
           gameover = true;
@@ -52,6 +76,9 @@ void Game::startGame(){
     }
     snake.ateFood(3, food.getX(), food.getY())
     food = Game::spawnFood(snake);
+    gfx_clear();
+    food.draw();
+    snake.drawSnake();
   }
 
 }
