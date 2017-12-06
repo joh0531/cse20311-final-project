@@ -9,8 +9,10 @@ void Game::startGame(){
   Food food;
   snake.drawSnake();
   food = Game::spawnFood(snake);
+  bool gameover = false;
 
   while (gameover == false){
+    bool atefood = false;
     while (atefood == false && gameover == false){
       std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
       int time_limit = 2000000/(snake.getSpeed()+9);
@@ -74,7 +76,7 @@ void Game::startGame(){
       }
     }
     }
-    snake.ateFood(3, food.getX(), food.getY())
+    snake.eatFood(3, food.getX(), food.getY());
     food = Game::spawnFood(snake);
     gfx_clear();
     food.draw();
@@ -93,6 +95,7 @@ Food Game::spawnFood(Snake snake) {
     randy = rand() % 31;
     check = Game::checkFoodSpawn(snake, randx, randy);
   }
+  Food s;
   s = Food(randx, randy);
   return s;
 }

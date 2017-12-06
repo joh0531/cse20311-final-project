@@ -1,6 +1,7 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 #include <vector>
+#include <cmath>
 #include "pixel.h"
 #include "food.h"
 

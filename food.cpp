@@ -40,3 +40,10 @@ void Food::draw(){
     y = y * 20 + 10;
     gfx_circle(x, y, rad);
 }
+
+Food& Food::operator= (const Food &a){
+  x = a.x;
+  y = a.y;
+
+  return *this;
+}

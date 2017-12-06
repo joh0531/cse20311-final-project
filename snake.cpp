@@ -68,29 +68,29 @@ bool Snake::checkDeath(){
   if (live_snake.size()>1){
     auto it = live_snake.begin();
     it++;
-    while(it != live_snake.end()){}
-      if(*it.getX() == live_snake[0].getX() && *it.getY() == live_snake[0].getY()){
+    while(it != live_snake.end()){
+      if(it->getX() == live_snake[0].getX() && it->getY() == live_snake[0].getY()){
         return true;
       }
       it++;
     }
   }
-  if (live_snake[0].getX() > 30 || live_snake[0].getX<0){
+  if (live_snake[0].getX() > 30 || live_snake[0].getX()<0){
     return true;
   }
-  if (live_snake[0].getY() > 30 || live_snake[0].getY<0){
+  if (live_snake[0].getY() > 30 || live_snake[0].getY()<0){
     return true;
   }
   return false;
 }
 
-void drawSnake(){
+void Snake::drawSnake(){
   for(auto it = live_snake.begin(); it != live_snake.end(); it++){
-    *it.draw();
+    it->draw();
   }
 }
 
-void incrementSnake(){
+void Snake::incrementSnake(){
     auto it = live_snake.begin();
     it++;
     auto it2 = live_snake.begin();
@@ -101,21 +101,29 @@ void incrementSnake(){
     }
     switch(direction){
       case 0:
+      {
         int a = live_snake[0].getX() + 1;
         live_snake[0].setX(a);
         break;
+      }
       case 1:
+      {
         int a = live_snake[0].getY() - 1;
         live_snake[0].setY(a);
         break;
+      }
       case 2:
+      {
         int a = live_snake[0].getX() - 1;
         live_snake[0].setX(a);
         break;
+      }
       case 3:
+      {
         int a = live_snake[0].getY() + 1;
         live_snake[0].setY(a);
         break;
+      }
       default:;
     }
 }
@@ -128,8 +136,8 @@ bool Snake::checkFoodSpawn(int x, int y){
     if (y == it->getY()){
       return false;
     }
-    diffx = abs(it->getX() - x);
-    diffy = abs(it->getY() - y);
+    int diffx = std::abs(it->getX() - x);
+    int diffy = std::abs(it->getY() - y);
     if (diffx == 1){
       return false;
     }
