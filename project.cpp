@@ -1,3 +1,5 @@
+//Jack Bao and Jewon Oh
+//project.cpp
 #include "gfxnew.h"
 #include "game.h"
 #include <unistd.h>

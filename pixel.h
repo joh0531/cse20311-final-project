@@ -1,3 +1,5 @@
+//Jack Bao and Jewon Oh
+//pixel.h
 #ifndef PIXEL_H
 #define PIXEL_H
 #include "gfxnew.h"

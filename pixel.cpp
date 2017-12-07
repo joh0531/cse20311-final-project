@@ -1,3 +1,5 @@
+//Jack Bao and Jewon Oh
+//pixel.cpp
 #include "pixel.h"
 
 Pixel::Pixel(){

@@ -1,3 +1,5 @@
+//Jack Bao and Jewon Oh
+//game.cpp
 #include "game.h"
 #include <cstring>
 #include <string>
@@ -15,12 +17,16 @@ void Game::draw(){
     {
         case WAIT:
         {
-            char text[] = "press enter to begin game";
+            char text1[] = "SNAKE";
+            char text2[] = "press enter to begin game";
             char font[] = "12x24";
             gfx_changefont(font);
-            int wd = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text, font) / 2);
-            int ht = (gfx_windowheight() / 2) - (gfx_textpixelheight(text, font) / 2);
-            gfx_text(wd, ht, text);
+            int wd1 = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text1, font) / 2);
+            int ht1 = (gfx_windowheight() / 2) - (gfx_textpixelheight(text1, font) / 2);
+            int wd2 = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text2, font) / 2);
+            int ht2 = ht1 + gfx_textpixelheight(text2, font);
+            gfx_text(wd1, ht1, text1);
+            gfx_text(wd2, ht2, text2);
             break;
         }
         case RUN:

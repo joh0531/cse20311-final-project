@@ -1,3 +1,5 @@
+//Jack Bao and Jewon Oh
+//food.h
 #ifndef FOOD_H
 #define FOOD_H
 #include "gfxnew.h"

@@ -1,3 +1,5 @@
+//Jack Bao and Jewon Oh
+//snake.cpp
 #include "snake.h"
 
 Snake::Snake(){

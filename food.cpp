@@ -1,3 +1,5 @@
+//Jack Bao and Jewon Oh
+//food.cpp
 #include "food.h"
 
 Food::Food(){

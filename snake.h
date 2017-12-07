@@ -1,3 +1,5 @@
+//Jack Bao and Jewon Oh
+//snake.h
 #ifndef SNAKE_H
 #define SNAKE_H
 #include <vector>
