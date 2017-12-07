@@ -27,7 +27,7 @@ class Snake{
       void addPixel(int, int);
       int getScore();
       void updateScore();
-      bool checkFood(Food);
+      bool checkFood(int, int);
       void eatFood(int, int, int);
       bool checkDeath();
       void drawSnake();

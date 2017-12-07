@@ -17,14 +17,15 @@ void Game::draw(){
             gfx_changefont(font);
             int wd = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text, font) / 2);
             int ht = (gfx_windowheight() / 2) - (gfx_textpixelheight(text, font) / 2);
-            gfx_text(wd, ht, text); //output something saying "click to begin game"
-            break;
+            gfx_text(wd, ht, text); //output something saying "click to begin game"            break;
         }
         case RUN:
             food.draw();
             snake.drawSnake();
             break;
         case GAMEOVER:
+        {
+            gfx_clear();
             char text1[] = "GAME OVER!";
             char scoreText[] = "Score: ";
             char score[] = c_str(std::to_string(snake.getScore()));
@@ -38,6 +39,7 @@ void Game::draw(){
             gfx_text(wd1, ht1, text1);
             gfx_text(wd2, ht2, text2);
             break;
+        }
     }
 }
 
@@ -59,6 +61,14 @@ void Game::update(){
                     //char c = gfx_wait();
                     //if (direction < 5){
                       snake.update();
+                      //if (snake.checkDeath()){
+                      //  state = GAMEOVER;
+                      //}
+                      if (snake.checkFood(food.getX(), food.getY())){
+                        snake.eatFood(3, food.getX(), food.getY());
+                        spawnFood();
+                      }
+
                     //}
                 //}
 
@@ -109,23 +119,23 @@ void Game::startGame(){
   Snake snake;
   Food food;
   snake.drawSnake();
-  food = this->spawnFood(snake);
+  food = this->spawnFood();
 }
 
 
-Food Game::spawnFood(Snake snake) {
+Food Game::spawnFood() {
   bool check = false;
   int randx = 0;
   int randy = 0;
   while (check == false){
     randx = rand() % 31;
     randy = rand() % 31;
-    check = Game::checkFoodSpawn(snake, randx, randy);
+    check = checkFoodSpawn(randx, randy);
   }
-  return Food(randx, randy);
+  food.setLocation(randx, randy);
 }
 
-bool Game::checkFoodSpawn(Snake snake, int x, int y) {
+bool Game::checkFoodSpawn(int x, int y) {
   bool logic = snake.checkFoodSpawn(x,y);
   return logic;
 }
