@@ -15,19 +15,32 @@ int main()
     Game game;
     bool quit = false;
     double dt = 1.0 / FPS;
+    std::chrono::time_point<std::chrono::system_clock> start = std::chrono::system_clock::now();
+
+    gfx_clear();
+    game.draw();
+    gfx_flush();
 
     while (!quit){
+
       //draw
-      gfx_clear();
-      game.draw();
-      gfx_flush();
+      //gfx_clear();
+      //game.draw();
+      //gfx_flush();
 
       //sleep
-      usleep(dt * pow(10, 6)*2);
-
+      //usleep(dt * pow(10, 6)*2);
+      std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
+      auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+      auto ms = milliseconds.count();
       //update
-      game.update();
-
+      if (ms > 70){
+        game.update();
+        start = std::chrono::system_clock::now();
+        gfx_clear();
+        game.draw();
+        gfx_flush();
+      }
       //input
       int event = gfx_event_waiting();
       if (event != 0)

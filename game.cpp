@@ -5,6 +5,7 @@
 
 Game::Game() {
     state = WAIT;
+    gfx_color(255,255,255);
 }
 
 Game::~Game() {}
@@ -23,8 +24,11 @@ void Game::draw(){
             break;
         }
         case RUN:
+            //gfx_color(255, 0, 0);
             food.draw();
+            //gfx_color(0, 255, 0);
             snake.drawSnake();
+            drawBorder();
             break;
         case GAMEOVER:
         {
@@ -115,4 +119,15 @@ void Game::spawnFood() {
 bool Game::checkFoodSpawn(int x, int y) {
   bool logic = snake.checkFoodSpawn(x,y);
   return logic;
+}
+
+void Game::drawBorder(){
+  for (int i = 0; i <= 32; i++){
+    gfx_fill_rectangle(20*i, 0, 20, 20);
+    gfx_fill_rectangle(20*i, 640, 20, 20);
+  }
+  for (int j = 0; j <= 32; j++){
+    gfx_fill_rectangle(0, 20*j, 20, 20);
+    gfx_fill_rectangle(640, 20*j, 20, 20);
+  }
 }

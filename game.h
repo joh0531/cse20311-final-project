@@ -19,6 +19,7 @@ class Game{
     void initializeGame();
     void spawnFood();
     bool checkFoodSpawn(int, int);
+    void drawBorder();
     enum State{
         WAIT,
         RUN,
