@@ -23,7 +23,7 @@ int main()
       gfx_flush();
 
       //sleep
-      usleep(dt * pow(10, 6));
+      usleep(dt * pow(10, 6)*2);
 
       //update
       game.update();

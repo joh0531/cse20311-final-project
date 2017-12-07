@@ -17,7 +17,8 @@ void Game::draw(){
             gfx_changefont(font);
             int wd = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text, font) / 2);
             int ht = (gfx_windowheight() / 2) - (gfx_textpixelheight(text, font) / 2);
-            gfx_text(wd, ht, text); //output something saying "click to begin game"            break;
+            gfx_text(wd, ht, text); //output something saying "click to begin game"
+            break;
         }
         case RUN:
             food.draw();
@@ -61,9 +62,10 @@ void Game::update(){
                     //char c = gfx_wait();
                     //if (direction < 5){
                       snake.update();
-                      //if (snake.checkDeath()){
-                      //  state = GAMEOVER;
-                      //}
+                      if (snake.checkDeath()){
+                        state = GAMEOVER;
+                      }
+                      gfx_fill_circle(30,10,10);
                       if (snake.checkFood(food.getX(), food.getY())){
                         snake.eatFood(3, food.getX(), food.getY());
                         spawnFood();
@@ -116,10 +118,8 @@ void Game::input(int event, char c){
 
 void Game::startGame(){
   state = RUN;
-  Snake snake;
-  Food food;
-  snake.drawSnake();
-  food = this->spawnFood();
+  snake.reset();
+  spawnFood();
 }
 
 
