@@ -36,8 +36,7 @@ int Pixel::getY(){
 
 void Pixel::draw(){
     int side = 20;
-    gfx_color(0, 255, 0);
-    gfx_fill_rectangle(x * 20, y * 20, side, side);
+    gfx_fill_rectangle(x * 20+20 , y * 20+20, side, side);
 }
 
 Pixel& Pixel::operator= (Pixel &a){

@@ -36,8 +36,7 @@ int Food::getY(){
 
 void Food::draw(){
     int rad = 10;
-    gfx_color(255, 0, 0);
-    gfx_fill_circle(x * 20 + rad, y * 20 + rad, rad);
+    gfx_fill_circle(x * 20+20 + rad, y * 20+20 + rad, rad);
 }
 
 Food& Food::operator=(Food a){
