@@ -4,6 +4,7 @@
 #define FOOD_H
 #include "gfxnew.h"
 
+//For further desciption of these functions, consult the .cpp file.
 class Food{
   public:
       Food();

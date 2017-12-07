@@ -2,6 +2,10 @@
 //snake.cpp
 #include "snake.h"
 
+/*Snake is essentially a class that contains a vector of pixels which represents
+the snake. The snake has a couple of private variables to keep track of movement
+as well as a private vector of pixels that represents the snake.*/
+
 Snake::Snake(){
   speed = 1;
   dir = NONE;
@@ -13,6 +17,7 @@ void Snake::update(){
   incrementSnake();
 }
 
+//Interprets input and converts to direction for the snake to travel.
 void Snake::input(int event, char c){
   switch (c){
     case 'd':
@@ -50,6 +55,7 @@ int Snake::getDirection(){
   return dir;
 }
 
+//The actual assignment part of the direction.
 void Snake::setDirection(Direction d){
   switch (d)
   {
@@ -82,6 +88,7 @@ int Snake::getScore(){
   return live_snake.size();
 }
 
+//checks the head's location to see if food is there.
 bool Snake::checkFood(int a, int b){
   if (a == live_snake[0].getX() && b == live_snake[0].getY()){
     return true;
@@ -89,15 +96,14 @@ bool Snake::checkFood(int a, int b){
   return false;
 }
 
+//Increases snake length.
 void Snake::eatFood(int s, int a, int b){
   for(int i = 1; i<= s; i++){
     this->addPixel(a, b);
   }
-//  if (speed < 16){
-//    speed++;
-//  }
 }
 
+//Checks to see if snake dies, either by running into a wall or hitting itself.
 bool Snake::checkDeath(){
   if (live_snake.size()>1){
     auto it = live_snake.begin();
@@ -121,12 +127,15 @@ bool Snake::checkDeath(){
   return false;
 }
 
+//draws the snake pixel by ppixel.
 void Snake::drawSnake(){
   for(auto it = live_snake.begin(); it != live_snake.end(); it++){
     it->draw();
   }
 }
 
+/*The snake moves by assigning each pixel to the value of the one ahead of it
+with the head moving a specific direction based on the snake's direciton variable*/
 void Snake::incrementSnake(){
     auto it2 = live_snake.rbegin();
     it2++;
@@ -134,17 +143,6 @@ void Snake::incrementSnake(){
         *it = *it2;
         it2++;
     }
-        /*auto it = live_snake.end();
-    it--;
-    it--;
-    auto it2 = live_snake.end();
-    it2--;
-
-    do {
-      *it2 = *it;
-      it--;
-      it2--;
-    } while (it != live_snake.begin());*/
 
     switch(this->dir){
       case RIGHT:
@@ -176,6 +174,7 @@ void Snake::incrementSnake(){
     }
 }
 
+//Check to see if food spawned is a valid spawn.
 bool Snake::checkFoodSpawn(int x, int y){
   for(auto it = live_snake.begin(); it != live_snake.end(); it++){
     if (x == it->getX() && y == it->getY()){
@@ -191,6 +190,7 @@ bool Snake::checkFoodSpawn(int x, int y){
   return true;
 }
 
+//Resets the snake so that the game can be played again.
 void Snake::reset(){
   dir = NONE;
   live_snake.clear();

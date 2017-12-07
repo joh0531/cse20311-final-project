@@ -5,6 +5,10 @@
 #include <string>
 #include <iostream>
 
+/*Game is controlled by a state machine. THe state machine mostly only deals
+with the highest level of game, that is when to draw, when to update the snake's
+location, and when the game is over.*/
+
 Game::Game() {
     state = WAIT;
     gfx_color(255,255,255);
@@ -12,6 +16,8 @@ Game::Game() {
 
 Game::~Game() {}
 
+/*draw either the start screen, the game, or the game-over screen, depending on
+the state.*/
 void Game::draw(){
     switch (state)
     {
@@ -63,6 +69,11 @@ void Game::draw(){
     }
 }
 
+/*Update the snake's location if game is in the run state. It also runs through
+a variety of checks, such as when the snake dies or when the snake eats food.
+If the first occurs, assign the state to be GAMEOVER. If snake eats food, then
+make the snake grow.
+*/
 void Game::update(){
     switch (state)
     {
@@ -74,7 +85,7 @@ void Game::update(){
           if (snake.checkDeath()){
             state = GAMEOVER;
           }
-          gfx_fill_circle(30,10,10);
+
           if (snake.checkFood(food.getX(), food.getY())){
             snake.eatFood(3, food.getX(), food.getY());
             spawnFood();
@@ -86,6 +97,7 @@ void Game::update(){
     }
 }
 
+//Grabs input if there is some.
 void Game::input(int event, char c){
     switch (state)
     {
@@ -103,13 +115,15 @@ void Game::input(int event, char c){
     }
 }
 
+//starts the game by changing state to RUN.
 void Game::startGame(){
   state = RUN;
   snake.reset();
   spawnFood();
 }
 
-
+/*Spawns the food by randomly choosing a locaiton, then seeing if the Location
+is a valid spawn point for food.*/
 void Game::spawnFood() {
   bool check = false;
   int randx = 0;
@@ -122,11 +136,14 @@ void Game::spawnFood() {
   food.setLocation(randx, randy);
 }
 
+/*Checks whether the food spawned is valid by seeing if a pixel is at the Location
+or if the head of the snake is one block away*/
 bool Game::checkFoodSpawn(int x, int y) {
   bool logic = snake.checkFoodSpawn(x,y);
   return logic;
 }
 
+//Draws the walls around the game.
 void Game::drawBorder(){
   for (int i = 0; i <= 32; i++){
     gfx_fill_rectangle(20*i, 0, 20, 20);

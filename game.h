@@ -10,6 +10,7 @@
 #include <chrono>
 #include <ctime>
 
+//For further desciption of these functions, consult the .cpp file.
 class Game{
   public:
     Game();
