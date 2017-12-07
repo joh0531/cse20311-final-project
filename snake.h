@@ -28,7 +28,6 @@ class Snake{
       void setDirection(Direction);
       void addPixel(int, int);
       int getScore();
-      void updateScore();
       bool checkFood(int, int);
       void eatFood(int, int, int);
       bool checkDeath();
@@ -42,7 +41,6 @@ class Snake{
       std::vector<Pixel> live_snake;
       int speed;
       Direction dir;
-      int score;
 };
 
 #endif

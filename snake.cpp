@@ -1,10 +1,8 @@
 #include "snake.h"
 
 Snake::Snake(){
-  live_snake.push_back(Pixel(16,16));
   speed = 1;
   dir = NONE;
-  score = 3;
 }
 
 Snake::~Snake(){ }
@@ -79,11 +77,7 @@ void Snake::addPixel(int a, int b){
 }
 
 int Snake::getScore(){
-  return score;
-}
-
-void Snake::updateScore(){
-  score = live_snake.size();
+  return live_snake.size();
 }
 
 bool Snake::checkFood(int a, int b){
@@ -100,7 +94,6 @@ void Snake::eatFood(int s, int a, int b){
 //  if (speed < 16){
 //    speed++;
 //  }
-  this->updateScore();
 }
 
 bool Snake::checkDeath(){
@@ -197,6 +190,7 @@ bool Snake::checkFoodSpawn(int x, int y){
 }
 
 void Snake::reset(){
+  dir = NONE;
   live_snake.clear();
   live_snake.push_back(Pixel(16,16));
 }

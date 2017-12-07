@@ -1,5 +1,7 @@
 #include "game.h"
+#include <cstring>
 #include <string>
+#include <iostream>
 
 Game::Game() {
     state = WAIT;
@@ -12,12 +14,12 @@ void Game::draw(){
     {
         case WAIT:
         {
-            char text[] = "click to begin game";
+            char text[] = "press enter to begin game";
             char font[] = "12x24";
             gfx_changefont(font);
             int wd = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text, font) / 2);
             int ht = (gfx_windowheight() / 2) - (gfx_textpixelheight(text, font) / 2);
-            gfx_text(wd, ht, text); //output something saying "click to begin game"
+            gfx_text(wd, ht, text);
             break;
         }
         case RUN:
@@ -29,16 +31,23 @@ void Game::draw(){
             gfx_clear();
             char text1[] = "GAME OVER!";
             char scoreText[] = "Score: ";
-            char score[] = c_str(std::to_string(snake.getScore()));
-            char text2[] = strcat(scoreText, score);
+            char text2[15];
+            std::string score = "Score: " + std::to_string(snake.getScore());
+            score.copy(text2, score.size());
+            text2[score.size()] = '\0';
             char font[] = "12x24";
+            char text3[] = "press enter to play again, press 'q' to quit";
             gfx_changefont(font);
+            gfx_color(255, 255, 255);
             int wd1 = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text1, font) / 2);
             int ht1 = (gfx_windowheight() / 2) - (gfx_textpixelheight(text1, font) / 2);
             int wd2 = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text2, font) / 2);
-            int ht2 = (gfx_windowheight() / 2) - (gfx_textpixelheight(text2, font) / 2) + 20;
+            int ht2 = ht1 + (gfx_textpixelheight(text2, font));
+            int wd3 = (gfx_windowwidth() / 2) - (gfx_textpixelwidth(text3, font) / 2);
+            int ht3 = ht2 + (gfx_textpixelheight(text3, font));
             gfx_text(wd1, ht1, text1);
             gfx_text(wd2, ht2, text2);
+            gfx_text(wd3, ht3, text3);
             break;
         }
     }
@@ -51,49 +60,15 @@ void Game::update(){
             break;
         case RUN:
         {
-            //while (gameover == false){
-              //while (atefood == false && gameover == false){
-                //std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
-                //int time_limit = 2000000/(snake.getSpeed()+9);
-                //bool moved = false;
-                //while (moved == false){
-                  //if (gfx_event_waiting()){
-                    //int direction = 5;
-                    //char c = gfx_wait();
-                    //if (direction < 5){
-                      snake.update();
-                      if (snake.checkDeath()){
-                        state = GAMEOVER;
-                      }
-                      gfx_fill_circle(30,10,10);
-                      if (snake.checkFood(food.getX(), food.getY())){
-                        snake.eatFood(3, food.getX(), food.getY());
-                        spawnFood();
-                      }
-
-                    //}
-                //}
-
-                //std::chrono::time_point<std::chrono::system_clock> foo = now + std::chrono::milliseconds(100);
-                //auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(foo - now);
-                //auto ms = milliseconds.count();
-                /*if (ms > time_limit){
-                  gfx_clear();
-                  snake.incrementSnake();
-                  snake.drawSnake();
-                  moved = true;
-                  if (snake.checkDeath()){
-                    gameover = true;
-                  }
-                  if(snake.checkFood(food)){
-                    atefood = true;
-                  }
-                }*/
-              //}
-              //}
-              //snake.eatFood(3, food.getX(), food.getY());
-              //food = this->spawnFood(snake);
-            //}
+          snake.update();
+          if (snake.checkDeath()){
+            state = GAMEOVER;
+          }
+          gfx_fill_circle(30,10,10);
+          if (snake.checkFood(food.getX(), food.getY())){
+            snake.eatFood(3, food.getX(), food.getY());
+            spawnFood();
+          }
         }
         break;
         case GAMEOVER:
@@ -105,13 +80,15 @@ void Game::input(int event, char c){
     switch (state)
     {
         case WAIT:
-            if (c == 1)
-                startGame();
+            if (c == 13)
+              startGame();
             break;
         case RUN:
             snake.input(event, c);
             break;
         case GAMEOVER:
+            if (c == 13)
+              startGame();
             break;
     }
 }
@@ -123,7 +100,7 @@ void Game::startGame(){
 }
 
 
-Food Game::spawnFood() {
+void Game::spawnFood() {
   bool check = false;
   int randx = 0;
   int randy = 0;
